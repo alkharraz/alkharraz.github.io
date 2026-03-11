@@ -71,7 +71,7 @@ module.exports = {
     },
   },
     
-    `gatsby-plugin-preload-link-crossorigin`,
+    //`gatsby-plugin-preload-link-crossorigin`,
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-filesystem`,

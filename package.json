@@ -31,7 +31,6 @@
     "gatsby-plugin-manifest": "^5.16.0",
     "gatsby-plugin-nprogress": "^5.16.0",
     "gatsby-plugin-offline": "^6.16.0",
-    "gatsby-plugin-preload-link-crossorigin": "^1.0.2",
     "gatsby-plugin-react-helmet": "^6.16.0",
     "gatsby-plugin-sass": "^6.16.0",
     "gatsby-plugin-sharp": "^5.16.0",
@@ -40,9 +39,9 @@
     "gatsby-transformer-sharp": "^5.16.0",
     "howler": "^2.2.4",
     "node-sass": "^9.0.0",
-    "react": "^19.2.4",
+    "react": "^18.3.1",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.4",
+    "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
