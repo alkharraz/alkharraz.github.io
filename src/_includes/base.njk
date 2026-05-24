@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description or 'Mohammed Alkharraz — automation & software engineer' }}">
+  <title>{% if title %}{{ title }} · Mohammed Alkharraz{% else %}Mohammed Alkharraz{% endif %}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <a href="/" class="site-title">Mohammed Alkharraz</a>
+        <ul>
+          <li><a href="/about" {% if page.url == '/about/' %}class="active"{% endif %}>about</a></li>
+          <li><a href="/projects" {% if page.url == '/projects/' %}class="active"{% endif %}>projects</a></li>
+          <li><a href="/resume" {% if page.url == '/resume/' %}class="active"{% endif %}>resume</a></li>
+          <li><a href="/blog" {% if page.url == '/blog/' %}class="active"{% endif %}>blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer>
+      <p>
+        Mohammed Alkharraz ·
+        <a href="https://github.com/alkharraz">github</a> ·
+        <a href="https://linkedin.com/in/malkharraz/">linkedin</a> ·
+        <a href="mailto:alkharraz.mohd@gmail.com">email</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

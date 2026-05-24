@@ -54,7 +54,10 @@ typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
+# eleventy build output
+_site/
+
+# gatsby files (legacy)
 .cache/
 public
 
