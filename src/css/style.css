@@ -196,6 +196,51 @@ hr {
   margin-bottom: 0.6rem;
 }
 
+/* Timeline */
+.timeline {
+  position: relative;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.75rem 0 0.75rem 1rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.4rem;
+  top: 1.1rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-year {
+  color: var(--muted);
+  font-size: 0.85rem;
+  min-width: 7rem;
+  padding-top: 0.1rem;
+  white-space: nowrap;
+}
+
+.timeline-company {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.timeline-role {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
