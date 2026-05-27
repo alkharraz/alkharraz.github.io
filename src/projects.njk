@@ -7,7 +7,7 @@ title: projects
 
 <div class="entry">
   <div class="entry-title">Creality 3D Printer — Firmware & Hardware Upgrade</div>
-  <div class="entry-meta">Personal Project · 2024</div>
+  <div class="entry-meta">Personal Project · 2022</div>
   <p>
     This started as frustration. Prints were warping, first layers were inconsistent, and manually
     tramming the bed before every job was getting old. But once I opened the machine up, it turned
@@ -76,42 +76,216 @@ title: projects
 <hr>
 
 <div class="entry">
-  <div class="entry-title">Liquid Desiccant Air Conditioner (LDAC)</div>
-  <div class="entry-meta">Senior Design Project · University of Bahrain · 2021</div>
+  <div class="entry-title">Pwnagotchi — Deep Reinforcement Learning for WiFi Pwning</div>
+  <div class="entry-meta">Personal Project · 2024</div>
+
+  <div class="project-images">
+    <figure>
+      <img src="/images/pwnagotchi.jpg" alt="Pwnagotchi — Raspberry Pi Zero W with e-ink display">
+      <figcaption>The unit — Raspberry Pi Zero W running the A2C agent, e-ink face on the front</figcaption>
+    </figure>
+  </div>
+
   <p>
-    Green cooling alternative combining evaporative cooling with liquid desiccant (CaCl₂) dehumidification,
-    designed for humid environments like Bahrain's. Awarded best project in the Mechanical Engineering
-    department and the Ebrahim Khalil Kanoo Award for Engineering Excellence.
+    I got into this because I kept asking a question I couldn't fully answer: how does AI
+    actually improve a security attack? Not in theory — in practice, with real hardware,
+    in the real world. Pwnagotchi was the most honest answer I could find.
+    It's also just a genuinely strange and compelling thing to build.
   </p>
   <p>
-    The dehumidifying unit reduced relative humidity by 43.3%, delivering a <strong>4× improvement in COP</strong>
-    vs the evaporative unit alone. Process: COMSOL simulation → CAD model → manufacture → experiment.
+    I built the whole thing from scratch — assembled the Raspberry Pi Zero W, flashed the
+    custom Pwnagotchi image, configured the network interfaces, tuned the agent parameters,
+    and got it running in the wild. The device roams passively, listens to wireless traffic,
+    and captures WPA handshakes — the cryptographic material you need to attempt an offline
+    password crack. What makes it more than just a script is the learning layer on top:
+    an <strong>A2C (Advantage Actor-Critic)</strong> reinforcement learning agent that
+    observes the environment and adjusts the device's behavior over time — how aggressively
+    it deauthenticates clients, how it prioritizes networks — getting better the more it's
+    exposed to. The e-ink display on the front shows a small face. It looks satisfied when
+    it captures something. It has moods. It is, objectively, a strange pet.
   </p>
-  <p><a href="https://www.youtube.com/watch?v=g01GOKKW8NY">→ demo video</a></p>
+
+  <h3>What it's actually capturing — the WPA 4-way handshake</h3>
+  <p>
+    To understand why the handshake matters, you need to understand what it contains.
+    When a client connects to a WPA2 network, neither side sends the password over the air.
+    Instead they run a 4-message exchange — the 4-way handshake — that proves both sides
+    know the password without ever transmitting it:
+  </p>
+  <ol>
+    <li><strong>Message 1</strong> — The access point sends ANonce, a random number, to the client.</li>
+    <li><strong>Message 2</strong> — The client generates its own SNonce, derives the PTK
+      (Pairwise Transient Key) from the password-derived PMK combined with both nonces and
+      both MAC addresses, then sends SNonce back alongside a MIC — a cryptographic signature
+      that proves it holds the right key material without revealing it.</li>
+    <li><strong>Message 3</strong> — The AP independently derives the same PTK, verifies the
+      MIC, then sends the GTK (Group Temporal Key, for broadcast traffic) encrypted under the PTK.</li>
+    <li><strong>Message 4</strong> — The client confirms. Both sides install their keys.
+      The 802.1X controlled port opens and traffic flows.</li>
+  </ol>
+  <p>
+    Pwnagotchi captures Messages 2 and 3 — specifically the MIC and the nonces.
+    With those in hand, an attacker can run an offline dictionary attack: hash each candidate
+    password the same way the protocol would, reconstruct the MIC, and check if it matches.
+    No need to be on the network. No need to decrypt live traffic. The handshake is enough.
+  </p>
+
+  <figure>
+    <img src="/images/wikiHandshakes.png" alt="WPA 4-way handshake sequence diagram" style="max-width:60%;">
+    <figcaption>WPA2 4-way handshake — EAPOL message sequence between supplicant and authenticator</figcaption>
+  </figure>
+
   <div class="tags">
-    <span class="tag">Thermodynamics</span>
-    <span class="tag">COMSOL</span>
-    <span class="tag">Autodesk Inventor</span>
-    <span class="tag">CaCl₂</span>
-    <span class="tag">Evaporative Cooling</span>
+    <span class="tag">Raspberry Pi Zero W</span>
+    <span class="tag">Deep Reinforcement Learning</span>
+    <span class="tag">A2C</span>
+    <span class="tag">WiFi Security</span>
+    <span class="tag">WPA2</span>
+    <span class="tag">802.11</span>
+    <span class="tag">bettercap</span>
+    <span class="tag">PCAP / hashcat</span>
+    <span class="tag">Linux</span>
   </div>
 </div>
 
 <hr>
 
 <div class="entry">
-  <div class="entry-title">Toyota 5-Speed Manual Transmission Design</div>
-  <div class="entry-meta">Mechanical Design · 2020</div>
+  <div class="entry-title">Liquid Desiccant Air Conditioner (LDAC)</div>
+  <div class="entry-meta">Senior Design Project · University of Bahrain · May 2021</div>
   <p>
-    Full design of a 5-speed manual FWD transmission — gears, shafts, bearings, housing, and mechanical keys.
-    Includes gear ratio calculations, AGMA bending/contact stress analysis, shaft deflection (max 0.022 in),
-    fatigue failure checks using distortion energy and max shear stress theories, and bearing selection from tables.
+    The LDAC is my Senior Design Project, built with my team at the University of Bahrain.
+    It was awarded <strong>best project in the Mechanical Engineering department</strong> for
+    2021, and received the <strong>Ebrahim Khalil Kanoo Award for Engineering Excellence</strong>.
   </p>
+
+  <div style="text-align:center; margin: 1.5rem 0;">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/g01GOKKW8NY"
+      title="LDAC demo video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p>
+    The LDAC combines an evaporative chiller with a liquid desiccant dehumidifier. The dehumidifier
+    uses a CaCl₂ solution that absorbs moisture from the air, allowing the cooling unit to operate
+    efficiently in a humid environment like Bahrain's. The evaporative cooler then lowers air
+    temperature through water spray interaction.
+  </p>
+  <p>The project was executed in sequence:</p>
+  <ul>
+    <li>COMSOL simulation to confirm system cycle feasibility before implementation</li>
+    <li>Preliminary CAD model in Autodesk Inventor for visualization and engineering drawings</li>
+    <li>Physical model manufactured with Single Point Plastics</li>
+    <li>Assembly with selected pipe fittings, pumps, and fan based on serviceability constraints</li>
+    <li>Experiment conducted to validate simulation — measuring flow rate, temperature, and relative
+      humidity throughout the LDAC cycle</li>
+  </ul>
+  <p>
+    The dehumidifying unit reduced relative humidity by <strong>43.3%</strong>, delivering a
+    <strong>4× improvement in COP</strong> over the evaporative unit alone. Under a 45% CaCl₂
+    concentration with a superior dehumidification process, the potential COP improvement
+    reaches <strong>9×</strong>.
+  </p>
+
+  <div class="tags">
+    <span class="tag">Thermodynamics</span>
+    <span class="tag">COMSOL</span>
+    <span class="tag">Autodesk Inventor</span>
+    <span class="tag">CaCl₂</span>
+    <span class="tag">Evaporative Cooling</span>
+    <span class="tag">Air Conditioning</span>
+  </div>
+</div>
+
+<hr>
+
+<div class="entry">
+  <div class="entry-title">Design of a Toyota 5-Speed Manual Transmission for FWD Cars</div>
+  <div class="entry-meta">Mechanical Design · December 2020</div>
+  <p>
+    Full design of a Toyota 5-speed manual transmission gearbox covering <strong>gears</strong>,
+    <strong>shafts</strong>, <strong>bearings</strong>, <strong>housing</strong>, and
+    <strong>mechanical keys</strong>. Gear design in mechanical engineering is a complex process —
+    power is transmitted through speed and torque via meshing gear teeth, and every component
+    in the drivetrain has to be sized, analysed, and validated.
+  </p>
+
+  <figure style="text-align:center; margin: 1.5rem 0;">
+    <img src="https://i.ibb.co/ZXCtnjq/Assembly1.png" alt="Gearbox assembly in Autodesk Inventor" style="max-width:560px; width:100%;">
+  </figure>
+
+  <p>Design began from the known gear ratios:</p>
+
+  <div style="overflow-x:auto; margin: 1rem 0;">
+    <table style="width:100%; border-collapse:collapse; font-size:0.9rem; text-align:center;">
+      <thead>
+        <tr>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">1st</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">2nd</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">3rd</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">4th</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">5th</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">Reverse</th>
+          <th style="border:1px solid var(--border); padding:0.4rem 0.8rem;">Final</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">3.545</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">1.904</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">1.310</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">1.031</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">0.815</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">3.250</td>
+          <td style="border:1px solid var(--border); padding:0.4rem 0.8rem;">3.941</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Gears</h3>
+  <ol>
+    <li>Number of teeth per gear calculated based on the minimum tooth count per gear</li>
+    <li>Rotational speed and torque derived for each stage</li>
+    <li>Diametral pitch selected based on gearbox size constraints; diameter and centre distance calculated</li>
+    <li>AGMA bending and contact stress analysis performed for all gear pairs</li>
+  </ol>
+
+  <h3>Shafts</h3>
+  <ol>
+    <li>Shaft length determined by gear face widths, bearing widths, and collar spacing — resulting in 38 in</li>
+    <li>Initial material CD 1020 with FoS 1.25 required a 1.08 in diameter; switched to AISI 1060,
+      which brought the diameter under 1 in — rounded up to 1 in, with recalculated safety factors
+      meeting company requirements</li>
+    <li>Maximum deflection calculated at <strong>0.02227 in</strong> using a 200 GPa modulus of
+      elasticity and 0.7853 in⁴ second moment of area</li>
+  </ol>
+
+  <h3>Bearings</h3>
+  <p>
+    With reaction forces and bore diameters known, ball bearings were selected from standard tables
+    and verified against inventory for suitability.
+  </p>
+
+  <h3>Mechanical Keys</h3>
+  <p>
+    Key selection based on shaft sizing. Square keys chosen — fatigue failure is less critical
+    under distortion energy theory and equivalent to the maximum shear stress theory.
+  </p>
+
   <div class="tags">
     <span class="tag">Autodesk Inventor</span>
     <span class="tag">Gear Design</span>
     <span class="tag">AGMA</span>
+    <span class="tag">Shaft Design</span>
     <span class="tag">Fatigue Analysis</span>
     <span class="tag">Bearing Selection</span>
+    <span class="tag">Mechanical Keys</span>
   </div>
 </div>
