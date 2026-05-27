@@ -6,76 +6,6 @@ title: projects
 <h1>projects</h1>
 
 <div class="entry">
-  <div class="entry-title">Creality 3D Printer — Firmware & Hardware Upgrade</div>
-  <div class="entry-meta">Personal Project · 2022</div>
-  <p>
-    This started as frustration. Prints were warping, first layers were inconsistent, and manually
-    tramming the bed before every job was getting old. But once I opened the machine up, it turned
-    into something more — I wanted to actually understand the hardware, learn to solder, get
-    comfortable with embedded firmware, and stop treating the printer as a black box.
-    That itch took me a lot further than just fixing the bed leveling.
-  </p>
-
-  <h3>Firmware — custom Marlin 2.x build</h3>
-  <p>
-    Stock Creality firmware has no support for the probe, so I had to compile
-    <strong>Marlin 2.x</strong> from source using PlatformIO against the board's specific
-    configuration files. This meant navigating the Marlin config headers, enabling
-    <code>AUTO_BED_LEVELING_BILINEAR</code> with a 5×5 probe mesh, mapping the
-    <code>BLTOUCH</code> signal pin correctly, and retuning <code>PIDTEMP</code> /
-    <code>PIDTEMPBED</code> constants with M303 auto-tune cycles. Getting it to actually
-    compile and flash without bricking the board was the most nerve-wracking part —
-    there's no undo on a bad flash. It worked first try.
-  </p>
-
-  <h3>Hardware — 3D Touch probe & soldering</h3>
-  <p>
-    Mounted a 3D Touch probe (BLTouch-compatible) on the hotend carriage. The probe fires a
-    steel pin down to physically touch the bed at each of the 25 mesh points, giving the
-    firmware a real height map instead of assuming the bed is flat (it never is).
-    The 5-wire harness (GND, VCC, GND, IN, OUT) needed to be routed through the cable chain
-    and terminated at the mainboard — which meant soldering the signal wire onto the correct
-    pad, since the stock board doesn't expose a clean probe header. First time doing
-    board-level soldering on a live project. Z-offset was then dialed in using the
-    paper-gap method and live baby-stepping through a test first layer until it was right.
-  </p>
-
-  <h3>Electronics & cable management</h3>
-  <p>
-    While the control box was open I rerouted everything properly —
-    <strong>braided PET mesh sleeving</strong> over all wire bundles, no free-hanging
-    conductors, strain relief on every connection point. Partly for reliability
-    (bare wires chafe against the frame under constant vibration), partly because it
-    looked embarrassing before. Checked all stepper driver voltages with a multimeter
-    while I was in there.
-  </p>
-
-  <div class="project-images">
-    <figure>
-      <img src="/images/3dprint1.jpg" alt="3D Touch probe mounted on hotend carriage">
-      <figcaption>3D Touch probe on the hotend carriage, with probe wiring routed through the cable chain</figcaption>
-    </figure>
-    <figure>
-      <img src="/images/3dprint2.jpg" alt="Mainboard and rewired electronics bay">
-      <figcaption>Mainboard after rewiring — all conductors sleeved and routed cleanly through the control enclosure</figcaption>
-    </figure>
-  </div>
-
-  <div class="tags">
-    <span class="tag">Marlin 2.x</span>
-    <span class="tag">C++ / PlatformIO</span>
-    <span class="tag">Auto Bed Leveling</span>
-    <span class="tag">3D Touch / BLTouch</span>
-    <span class="tag">PID Tuning</span>
-    <span class="tag">Linear Advance</span>
-    <span class="tag">Creality</span>
-    <span class="tag">Embedded Systems</span>
-  </div>
-</div>
-
-<hr>
-
-<div class="entry">
   <div class="entry-title">Pwnagotchi — Deep Reinforcement Learning for WiFi Pwning</div>
   <div class="entry-meta">Personal Project · 2024</div>
 
@@ -145,6 +75,76 @@ title: projects
     <span class="tag">bettercap</span>
     <span class="tag">PCAP / hashcat</span>
     <span class="tag">Linux</span>
+  </div>
+</div>
+
+<hr>
+
+<div class="entry">
+  <div class="entry-title">Creality 3D Printer — Firmware & Hardware Upgrade</div>
+  <div class="entry-meta">Personal Project · 2022</div>
+  <p>
+    This started as frustration. Prints were warping, first layers were inconsistent, and manually
+    tramming the bed before every job was getting old. But once I opened the machine up, it turned
+    into something more — I wanted to actually understand the hardware, learn to solder, get
+    comfortable with embedded firmware, and stop treating the printer as a black box.
+    That itch took me a lot further than just fixing the bed leveling.
+  </p>
+
+  <h3>Firmware — custom Marlin 2.x build</h3>
+  <p>
+    Stock Creality firmware has no support for the probe, so I had to compile
+    <strong>Marlin 2.x</strong> from source using PlatformIO against the board's specific
+    configuration files. This meant navigating the Marlin config headers, enabling
+    <code>AUTO_BED_LEVELING_BILINEAR</code> with a 5×5 probe mesh, mapping the
+    <code>BLTOUCH</code> signal pin correctly, and retuning <code>PIDTEMP</code> /
+    <code>PIDTEMPBED</code> constants with M303 auto-tune cycles. Getting it to actually
+    compile and flash without bricking the board was the most nerve-wracking part —
+    there's no undo on a bad flash. It worked first try.
+  </p>
+
+  <h3>Hardware — 3D Touch probe & soldering</h3>
+  <p>
+    Mounted a 3D Touch probe (BLTouch-compatible) on the hotend carriage. The probe fires a
+    steel pin down to physically touch the bed at each of the 25 mesh points, giving the
+    firmware a real height map instead of assuming the bed is flat (it never is).
+    The 5-wire harness (GND, VCC, GND, IN, OUT) needed to be routed through the cable chain
+    and terminated at the mainboard — which meant soldering the signal wire onto the correct
+    pad, since the stock board doesn't expose a clean probe header. First time doing
+    board-level soldering on a live project. Z-offset was then dialed in using the
+    paper-gap method and live baby-stepping through a test first layer until it was right.
+  </p>
+
+  <h3>Electronics & cable management</h3>
+  <p>
+    While the control box was open I rerouted everything properly —
+    <strong>braided PET mesh sleeving</strong> over all wire bundles, no free-hanging
+    conductors, strain relief on every connection point. Partly for reliability
+    (bare wires chafe against the frame under constant vibration), partly because it
+    looked embarrassing before. Checked all stepper driver voltages with a multimeter
+    while I was in there.
+  </p>
+
+  <div class="project-images">
+    <figure>
+      <img src="/images/3dprint1.jpg" alt="3D Touch probe mounted on hotend carriage">
+      <figcaption>3D Touch probe on the hotend carriage, with probe wiring routed through the cable chain</figcaption>
+    </figure>
+    <figure>
+      <img src="/images/3dprint2.jpg" alt="Mainboard and rewired electronics bay">
+      <figcaption>Mainboard after rewiring — all conductors sleeved and routed cleanly through the control enclosure</figcaption>
+    </figure>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Marlin 2.x</span>
+    <span class="tag">C++ / PlatformIO</span>
+    <span class="tag">Auto Bed Leveling</span>
+    <span class="tag">3D Touch / BLTouch</span>
+    <span class="tag">PID Tuning</span>
+    <span class="tag">Linear Advance</span>
+    <span class="tag">Creality</span>
+    <span class="tag">Embedded Systems</span>
   </div>
 </div>
 
