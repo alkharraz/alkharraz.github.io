@@ -5,6 +5,7 @@
   --muted:   #878580;
   --accent:  #3AA99F;
   --border:  #282726;
+  --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'IBM Plex Sans', Segoe UI, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
   --width: 700px;
 }
@@ -27,9 +28,9 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--mono);
-  font-size: 14px;
-  line-height: 1.9;
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 a {
