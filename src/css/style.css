@@ -3,7 +3,7 @@
   --surface: #1C1B1A;
   --text:    #CECDC3;
   --muted:   #878580;
-  --accent:  #3AA99F;
+  --accent:  #CECDC3;
   --border:  #282726;
   --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'IBM Plex Sans', Segoe UI, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
@@ -15,7 +15,7 @@
   --surface: #F2F0E5;
   --text:    #100F0F;
   --muted:   #6F6E69;
-  --accent:  #24837B;
+  --accent:  #100F0F;
   --border:  #E6E4D9;
 }
 
@@ -35,10 +35,11 @@ body {
 
 a {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover {
+  opacity: 0.75;
   text-decoration: underline;
 }
 
@@ -69,6 +70,7 @@ nav {
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 nav ul {
@@ -81,6 +83,7 @@ nav ul {
 nav ul a {
   color: var(--muted);
   font-size: 0.85rem;
+  text-decoration: none;
 }
 
 nav ul a:hover,
