@@ -5,13 +5,15 @@ date: 2024-09-14
 
 The standard career advice is to pick a lane and go deep. Specialize. Become the expert. There's a logic to it — expertise is legible, hireable, and compounds over time. The problem is that it optimizes for being predictable in a world that rewards being surprising.
 
-Steph Ango [makes the case for hybridization](https://stephango.com/hybridize) instead. Not generalism — which often means being shallow across many things — but genuine depth in two or more distinct domains, especially domains that don't obviously belong together.
+The alternative isn't generalism — which usually means being shallow across many things. It's hybridization: genuine depth in two or more distinct domains, especially domains that don't obviously belong together.
 
-The analogy he uses is materials science. Composite materials and alloys derive their useful properties from the combination of dissimilar elements. Carbon fiber is carbon and epoxy resin. Steel is iron and carbon. Neither component alone has the properties of the result. Hybrid people work the same way.
+The analogy is materials science. Composite materials and alloys derive their useful properties from the combination of dissimilar elements. Carbon fiber is carbon and epoxy resin. Steel is iron and carbon. Neither component alone has the properties of the result. Hybrid people work the same way.
 
 ---
 
 ## Two shapes
+
+![Generalist, specialist, and hybrid knowledge shapes](https://kepano.s3.amazonaws.com/generalist-specialist-hybrid.png)
 
 There are two ways this tends to manifest.
 
@@ -25,7 +27,7 @@ There are two ways this tends to manifest.
 
 The argument for hybridization has gotten stronger as AI gets better at narrow tasks. If the value you offer is purely executing within a well-defined domain, that's the part that's easiest to automate. What's harder to automate is the ability to see a connection that nobody else sees because nobody else is standing at the intersection you're standing at.
 
-The other thing: complex systems — organizations, codebases, supply chains, cities — tend to fail at the boundaries between disciplines, not at the centers. The mechanical engineer and the electrical engineer each designed their subsystem correctly; the problem is in the interface between them. Hybrid people are disproportionately useful at exactly those seams.
+Complex systems — organizations, codebases, supply chains, cities — tend to fail at the boundaries between disciplines, not at the centers. The mechanical engineer and the electrical engineer each designed their subsystem correctly; the problem is in the interface between them. Hybrid people are disproportionately useful at exactly those seams.
 
 ---
 
