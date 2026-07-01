@@ -193,6 +193,29 @@ hr {
   flex-shrink: 0;
 }
 
+/* ── Download CV ── */
+.download-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.download-cv:hover {
+  border-color: var(--accent);
+  opacity: 1;
+  text-decoration: none;
+  background: var(--surface);
+}
+
+.download-cv svg {
+  flex-shrink: 0;
+}
+
 /* ── Work / project entries ── */
 .entry {
   margin-bottom: 2.5rem;
